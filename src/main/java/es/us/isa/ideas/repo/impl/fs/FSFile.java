@@ -1,6 +1,7 @@
 package es.us.isa.ideas.repo.impl.fs;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.FileUtils;
 
@@ -23,7 +24,7 @@ public class FSFile extends File {
 			java.io.File file = new java.io.File(IdeasRepo.get()
 					.getObjectFullUri(this));
 			if (file.exists()) {
-				FileUtils.writeStringToFile(file, content);
+				FileUtils.writeStringToFile(file, content,StandardCharsets.ISO_8859_1.name());
 				res = true;
 			} else {
 				System.out.println("Cannot write to file: "
@@ -119,7 +120,7 @@ public class FSFile extends File {
 		try {
 			java.io.File file = new java.io.File(IdeasRepo.get()
 					.getObjectFullUri(this));
-			content = FileUtils.readFileToString(file);
+			content = FileUtils.readFileToString(file,StandardCharsets.ISO_8859_1.name());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
